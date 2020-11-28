@@ -19,7 +19,7 @@ public class Main {
 
         //Test CarManager
         Car car = new Car("1981", "126P", "Fiat", 2000.0);
-        Truck truck = new Truck("1997", "FH16", "Volvo", 2576000.999, 70.5);
+        Car truck = new Truck("1997", "FH16", "Volvo", 2576000.999, 70.5);
 
 
         CarManager<Car> carManager = new CarManager<>();
@@ -35,7 +35,8 @@ public class Main {
         System.out.println(carManager.getCarList());
         carManager.removeCar(truck);
         System.out.println(carManager.getCarList());
+        //carManager.addCar(student); -> Test - should NOT compile
     }
-
+    //POJO - Klasa z polami, konstruktorem, getterami i seterami?
     //TODO: jeszcze jedna klasa generyczna z metodą generyczną... + blog (klasa crud)
 }
