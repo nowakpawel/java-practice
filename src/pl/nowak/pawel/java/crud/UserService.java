@@ -1,6 +1,7 @@
 package pl.nowak.pawel.java.crud;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -45,7 +46,15 @@ public class UserService {
 
     //delete
     public void delete(Integer id) {
+        Iterator<User> iterator = usersList.iterator();
 
+        while (iterator.hasNext()) {
+            User user = iterator.next();
+
+            if(user.getId().equals(id)) {
+                iterator.remove();
+            }
+        }
     }
 
     public List<User> list() {
