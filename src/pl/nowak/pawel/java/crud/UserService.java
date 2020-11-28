@@ -29,7 +29,17 @@ public class UserService {
     }
 
     //update
-    public User update(Integer id, User user) {
+    public User update(Integer id, User userToUpdate) {
+        for (User user : usersList) {
+            if (user.getId().equals(id)) {
+                //TODO: Implement validation:
+                user.setLogin(userToUpdate.getLogin());
+                user.setEmail(userToUpdate.getEmail());
+                user.setPassword(userToUpdate.getPassword());
+
+                return user;
+            }
+        }
         return null;
     }
 
