@@ -3,6 +3,7 @@ package pl.nowak.pawel.java.crud;
 import java.util.Date;
 
 public class User {
+    private int id;
     private String login;
     private String email;
     private String password;
@@ -16,6 +17,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.creationDate = creationDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLogin() {

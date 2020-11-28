@@ -38,5 +38,9 @@ public class Main {
         //carManager.addCar(student); -> Test - should NOT compile
     }
     //POJO - Klasa z polami, konstruktorem, getterami i seterami?
+
+    //====================================================================
+    //                            CRUD TEST                             //
+    //====================================================================
     //TODO: jeszcze jedna klasa generyczna z metodą generyczną... + blog (klasa crud)
 }
