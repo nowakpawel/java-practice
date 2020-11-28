@@ -19,6 +19,12 @@ public class UserService {
 
     //read
     public User read(Integer id) {
+        for (User user : usersList) {
+            if (user.getId().equals(id)) {
+                return user;
+            }
+        }
+
         return null;
     }
 

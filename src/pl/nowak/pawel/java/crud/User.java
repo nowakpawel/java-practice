@@ -3,7 +3,7 @@ package pl.nowak.pawel.java.crud;
 import java.util.Date;
 
 public class User {
-    private int id;
+    private Integer id;
     private String login;
     private String email;
     private String password;
@@ -19,11 +19,11 @@ public class User {
         this.creationDate = creationDate;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
