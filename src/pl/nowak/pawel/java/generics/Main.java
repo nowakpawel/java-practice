@@ -1,6 +1,10 @@
 package pl.nowak.pawel.java.generics;
 
+import pl.nowak.pawel.java.crud.User;
+import pl.nowak.pawel.java.crud.UserService;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -36,11 +40,29 @@ public class Main {
         carManager.removeCar(truck);
         System.out.println(carManager.getCarList());
         //carManager.addCar(student); -> Test - should NOT compile
+
+        //====================================================================
+        //                            CRUD TEST                             //
+        //====================================================================
+
+        System.out.println("=============================== CRUD Test =====================================");
+        UserService userService = new UserService();
+
+        System.out.println("User service at the beginning");
+        List<User> usersList = userService.list();
+        System.out.println(usersList + "\n");
+
+        System.out.println("Add one user to usersList");
+        User user1 = new User("admin", "admin@nowakpawel.pl", "secretpassword123");
+
+        System.out.println("User1 = " + user1.toString());
+        User createdUser = userService.create(user1);
+        System.out.println("New created user" + user1.toString());
+
+        //TODO: Line 19....
     }
     //POJO - Klasa z polami, konstruktorem, getterami i seterami?
+    //Czy mogę stworzyć generyczną klasę CRUD'ową?
 
-    //====================================================================
-    //                            CRUD TEST                             //
-    //====================================================================
-    //TODO: jeszcze jedna klasa generyczna z metodą generyczną... + blog (klasa crud)
+
 }

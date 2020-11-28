@@ -7,16 +7,15 @@ public class User {
     private String login;
     private String email;
     private String password;
-    private Date creationDate;
+    //private Date creationDate;
 
     public User() {
     }
 
-    public User(String login, String email, String password, Date creationDate) {
+    public User(String login, String email, String password) {
         this.login = login;
         this.email = email;
         this.password = password;
-        this.creationDate = creationDate;
     }
 
     public Integer getId() {
@@ -51,21 +50,13 @@ public class User {
         this.password = password;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", creationDate=" + creationDate +
+                "Id ='" + id + '\'' +
+                ", login ='" + login + '\'' +
+                ", email ='" + email + '\'' +
+                ", password ='" + password + '\'' +
                 '}';
     }
 }

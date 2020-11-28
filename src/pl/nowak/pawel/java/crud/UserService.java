@@ -58,6 +58,6 @@ public class UserService {
     }
 
     public List<User> list() {
-        return null;
+        return usersList;
     }
 }
