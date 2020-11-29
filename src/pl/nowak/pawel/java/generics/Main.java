@@ -74,7 +74,14 @@ public class Main {
 
         System.out.println("Users list after update " + usersList);
 
+        //add new user to users list.
+        User newUser = new User("admin", "admin@nowakpawel.pl", "securepassword123");
+        userService.create(newUser);
+        System.out.println("\nUsers list with new User: " + usersList);
 
+        //delete user:
+        userService.delete(usersList.get(0).getId());
+        System.out.println("\nUsers list after deleting one user: " + usersList);
 
     }
     //POJO - Klasa z polami, konstruktorem, getterami i seterami?
