@@ -55,11 +55,27 @@ public class Main {
         System.out.println("Add one user to usersList");
         User user1 = new User("admin", "admin@nowakpawel.pl", "secretpassword123");
 
-        System.out.println("User1 = " + user1.toString());
+        System.out.println("User1: " + user1.toString());
         User createdUser = userService.create(user1);
-        System.out.println("New created user" + user1.toString());
+        System.out.println("New created user: " + createdUser.toString());
 
-        //TODO: Line 19....
+        System.out.println("List of users after adding one user: " + usersList);
+
+        System.out.println("\nUpdating user1:\n");
+
+        Integer firstUserId = usersList.get(0).getId();
+        User firstUser = userService.read(firstUserId);
+
+        System.out.println("User to modify: " + firstUser);
+        User userToUpdate = new User("Pawlo", "kontakt@nowakpawel.pl", "anothersecurepassword");
+
+        //update user
+        User updatedUser = userService.update(firstUserId, userToUpdate);
+
+        System.out.println("Users list after update " + usersList);
+
+
+
     }
     //POJO - Klasa z polami, konstruktorem, getterami i seterami?
     //Czy mogę stworzyć generyczną klasę CRUD'ową?

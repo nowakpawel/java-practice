@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class UserService {
     private List<User> usersList = new ArrayList<>();
-    private Random randomUserId;
+    private Random randomUserId = new Random();
 
     //create
     public User create(User user) {
-        int id = randomUserId.nextInt(100_000);
+        Integer id = randomUserId.nextInt();
         user.setId(id);
 
         usersList.add(user);
