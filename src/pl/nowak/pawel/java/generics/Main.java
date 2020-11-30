@@ -23,7 +23,7 @@ public class Main {
 
         //Test CarManager
         Car car = new Car("1981", "126P", "Fiat", 2000.0);
-        Car truck = new Truck("1997", "FH16", "Volvo", 2576000.999, 70.5);
+        Truck truck = new Truck("1997", "FH16", "Volvo", 2576000.999, 70.5);
 
 
         CarManager<Car> carManager = new CarManager<>();

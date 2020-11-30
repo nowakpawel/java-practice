@@ -1,25 +1,30 @@
 package pl.nowak.pawel.java.crud;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.logging.Logger;
 
 public class UserService {
-    private List<User> usersList = new ArrayList<>();
-    private Random randomUserId = new Random();
+//    private List<User> usersList = new ArrayList<>();
+//    private Random randomUserId = new Random();
+    private static final Logger LOGGER  = Logger.getLogger(UserService.class.getName());
+    private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     //create
     public User create(User user) {
-        Integer id = randomUserId.nextInt();
-        user.setId(id);
-
-        usersList.add(user);
-        return user;
+        if (user == null) {
+            throw new NoSuchElementException("User is null");
+        }
+     return userRepository.create(user);
     }
 
     //read
     public User read(Integer id) {
+        //System.out.println("Reading normal user...");
+        LOGGER.info("Reading normal user");
         for (User user : usersList) {
             if (user.getId().equals(id)) {
                 return user;
@@ -60,4 +65,8 @@ public class UserService {
     public List<User> list() {
         return usersList;
     }
+
+    //TODO: przerobić resztę metod na delegaty..i przenieść logikę metod do repository
+    //Teoria o własnych wyjątkach
+    //LOGGER
 }

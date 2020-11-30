@@ -20,6 +20,14 @@ public class Student {
         this.age = age;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
