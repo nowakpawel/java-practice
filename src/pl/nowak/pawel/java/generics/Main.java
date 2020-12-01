@@ -46,46 +46,44 @@ public class Main {
         //====================================================================
 
         System.out.println("=============================== CRUD Test =====================================");
-        UserService userService = new UserService();
+//        UserService userService = new UserService();
+//
+//        System.out.println("User service at the beginning");
+//        List<User> usersList = userService.list();
+//        System.out.println(usersList + "\n");
+//
+//        System.out.println("Add one user to usersList");
+//        User user1 = new User("admin", "admin@nowakpawel.pl", "secretpassword123");
+//
+//        System.out.println("User1: " + user1.toString());
+//        User createdUser = userService.create(user1);
+//        System.out.println("New created user: " + createdUser.toString());
+//
+//        System.out.println("List of users after adding one user: " + usersList);
+//
+//        System.out.println("\nUpdating user1:\n");
+//
+//        Integer firstUserId = usersList.get(0).getId();
+//        User firstUser = userService.read(firstUserId);
+//
+//        System.out.println("User to modify: " + firstUser);
+//        User userToUpdate = new User("Pawlo", "kontakt@nowakpawel.pl", "anothersecurepassword");
+//
+//        //update user
+//        User updatedUser = userService.update(firstUserId, userToUpdate);
+//
+//        System.out.println("Users list after update " + usersList);
+//
+//        //add new user to users list.
+//        User newUser = new User("admin", "admin@nowakpawel.pl", "securepassword123");
+//        userService.create(newUser);
+//        System.out.println("\nUsers list with new User: " + usersList);
+//
+//        //delete user:
+//        userService.delete(usersList.get(0).getId());
+//        System.out.println("\nUsers list after deleting one user: " + usersList);
 
-        System.out.println("User service at the beginning");
-        List<User> usersList = userService.list();
-        System.out.println(usersList + "\n");
 
-        System.out.println("Add one user to usersList");
-        User user1 = new User("admin", "admin@nowakpawel.pl", "secretpassword123");
-
-        System.out.println("User1: " + user1.toString());
-        User createdUser = userService.create(user1);
-        System.out.println("New created user: " + createdUser.toString());
-
-        System.out.println("List of users after adding one user: " + usersList);
-
-        System.out.println("\nUpdating user1:\n");
-
-        Integer firstUserId = usersList.get(0).getId();
-        User firstUser = userService.read(firstUserId);
-
-        System.out.println("User to modify: " + firstUser);
-        User userToUpdate = new User("Pawlo", "kontakt@nowakpawel.pl", "anothersecurepassword");
-
-        //update user
-        User updatedUser = userService.update(firstUserId, userToUpdate);
-
-        System.out.println("Users list after update " + usersList);
-
-        //add new user to users list.
-        User newUser = new User("admin", "admin@nowakpawel.pl", "securepassword123");
-        userService.create(newUser);
-        System.out.println("\nUsers list with new User: " + usersList);
-
-        //delete user:
-        userService.delete(usersList.get(0).getId());
-        System.out.println("\nUsers list after deleting one user: " + usersList);
 
     }
-    //POJO - Klasa z polami, konstruktorem, getterami i seterami?
-    //Czy mogę stworzyć generyczną klasę CRUD'ową?
-
-
 }

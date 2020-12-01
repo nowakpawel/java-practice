@@ -46,6 +46,7 @@ public class UserRepository {
         return null;
     }
 
+    //delete
     public void delete(Integer id) {
         Iterator<User> iterator = usersList.iterator();
 

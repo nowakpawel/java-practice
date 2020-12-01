@@ -3,10 +3,6 @@ package pl.nowak.pawel.java.crud;
 import java.util.*;
 import java.util.logging.Logger;
 
-/**
- * User Service gada z User Repository, czyli moim backenedem (logika)
- *
- */
 
 public class UserService {
     private static final Logger LOGGER  = Logger.getLogger(UserService.class.getName());
