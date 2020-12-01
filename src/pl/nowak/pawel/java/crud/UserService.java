@@ -3,9 +3,12 @@ package pl.nowak.pawel.java.crud;
 import java.util.*;
 import java.util.logging.Logger;
 
+/**
+ * User Service gada z User Repository, czyli moim backenedem (logika)
+ *
+ */
+
 public class UserService {
-//    private List<User> usersList = new ArrayList<>();
-//    private Random randomUserId = new Random();
     private static final Logger LOGGER  = Logger.getLogger(UserService.class.getName());
     private UserRepository userRepository;
 
@@ -23,47 +26,22 @@ public class UserService {
 
     //read
     public User read(Integer id) {
-        //System.out.println("Reading normal user...");
-        LOGGER.info("Reading normal user");
-        for (User user : usersList) {
-            if (user.getId().equals(id)) {
-                return user;
-            }
-        }
-
-        return null;
+        //LOGGER.info("Reading normal user");
+        return userRepository.read(id);
     }
 
     //update
     public User update(Integer id, User userToUpdate) {
-        for (User user : usersList) {
-            if (user.getId().equals(id)) {
-                //TODO: Implement validation:
-                user.setLogin(userToUpdate.getLogin());
-                user.setEmail(userToUpdate.getEmail());
-                user.setPassword(userToUpdate.getPassword());
-
-                return user;
-            }
-        }
-        return null;
+        return userRepository.update(id, userToUpdate);
     }
 
     //delete
     public void delete(Integer id) {
-        Iterator<User> iterator = usersList.iterator();
-
-        while (iterator.hasNext()) {
-            User user = iterator.next();
-
-            if(user.getId().equals(id)) {
-                iterator.remove();
-            }
-        }
+        userRepository.delete(id);
     }
 
     public List<User> list() {
-        return usersList;
+        return userRepository.getUsersList();
     }
 
     //TODO: przerobić resztę metod na delegaty..i przenieść logikę metod do repository
