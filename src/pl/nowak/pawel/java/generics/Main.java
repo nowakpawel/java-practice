@@ -1,10 +1,12 @@
 package pl.nowak.pawel.java.generics;
 
-import pl.nowak.pawel.java.crud.User;
-import pl.nowak.pawel.java.crud.UserService;
+import pl.nowak.pawel.java.crud.web.controller.UserController;
+import pl.nowak.pawel.java.crud.repository.UserRepository;
+import pl.nowak.pawel.java.crud.service.UserService;
+import pl.nowak.pawel.java.crud.exception.UserException;
+import pl.nowak.pawel.java.crud.web.model.UserModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -82,8 +84,22 @@ public class Main {
 //        //delete user:
 //        userService.delete(usersList.get(0).getId());
 //        System.out.println("\nUsers list after deleting one user: " + usersList);
+        UserRepository userRepository = new UserRepository();
+        UserService userService = new UserService(userRepository);
+        UserController userController = new UserController(userService);
+        try {
+            userController.read(-1);
+        } catch (UserException e) {
+            e.printStackTrace();
+        } finally {
 
+        }
 
+        UserModel userModel = new UserModel();
+        userModel.setEmail("admin@nowakpawel.pl");
+        System.out.println(userModel);
 
-    }
+    } //Do każdej metody w repository dodac wyjatek, co najmniej UserException propagować wyjątki do controllera
+    //Artykuł o warstwach -> Zrobić mappera i użyć go w warstwie service, tak aby controller zwracał model, a repository entity
+    //
 }

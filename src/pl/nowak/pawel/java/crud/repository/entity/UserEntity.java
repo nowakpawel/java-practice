@@ -1,18 +1,18 @@
-package pl.nowak.pawel.java.crud;
+package pl.nowak.pawel.java.crud.repository.entity;
 
 import java.util.Date;
 
-public class User {
+public class UserEntity {
     private Integer id;
     private String login;
     private String email;
     private String password;
     //private Date creationDate;
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(String login, String email, String password) {
+    public UserEntity(String login, String email, String password) {
         this.login = login;
         this.email = email;
         this.password = password;
