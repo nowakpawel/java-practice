@@ -22,12 +22,12 @@ public class UserService {
         if (userEntity == null) {
             throw new NoSuchElementException("User is null");
         }
-     return userRepository.create(userEntity);
+
+        return userRepository.create(userEntity);
     }
 
     //read
     public UserEntity read(Integer id) throws UserException {
-        //LOGGER.info("Reading normal user");
         UserEntity userEntity =  userRepository.read(id);
         if (userEntity == null) {
             throw new UserNotFoundException("User not found for id " + id);
