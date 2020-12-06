@@ -13,7 +13,6 @@ import java.util.List;
 public class UserController {
     private UserService userService; //Relacja typu agregacja
     private UserMapper userMapper = new UserMapper();
-    //private CarService
 
     public UserController(UserService userService) { //dependency injection
         this.userService = userService;
@@ -42,7 +41,6 @@ public class UserController {
     public List<UserModel> readAllUsers() {
         List<UserModel> usersList = new ArrayList<>();
         for(UserEntity user : userService.list()) {
-//            UserModel userModel = new UserModel();
             UserModel userModel = userMapper.fromEntityToModel(user);
             usersList.add(userModel);
         }

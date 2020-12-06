@@ -41,16 +41,16 @@ public class UserService {
         }
     }
 
-//    //update
+    //update
     public UserEntity update(Integer id, UserEntity userEntityToUpdate) {
         return userRepository.update(id, userEntityToUpdate);
     }
-//
-//    //delete
+
+    //delete
     public void delete(Integer id) {
         userRepository.delete(id);
     }
-//
+    
     public List<UserEntity> list() {
         return userRepository.getUsersList();
     }
