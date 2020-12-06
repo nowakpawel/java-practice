@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.generics;
 
+import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.web.controller.UserController;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.service.UserService;
@@ -87,13 +88,9 @@ public class Main {
         UserRepository userRepository = new UserRepository();
         UserService userService = new UserService(userRepository);
         UserController userController = new UserController(userService);
-        try {
-            userController.readUser(-1);
-        } catch (UserException e) {
-            e.printStackTrace();
-        } finally {
 
-        }
+        userController.readUser(-1);
+
 
         UserModel userModel = new UserModel();
         userModel.setEmail("admin@nowakpawel.pl");
