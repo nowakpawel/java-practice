@@ -32,25 +32,22 @@ public class UserService {
     }
 
     //read
-    public UserEntity read(Integer id) throws UserException {
-        UserEntity userEntity =  userRepository.read(id);
-        if (userEntity == null) {
-            throw new UserNotFoundException("User not found for id " + id);
-        } else {
-            return userEntity;
-        }
+    public UserEntity read(Integer id) throws UserNotFoundException {
+        UserEntity userEntity = userRepository.read(id);
+        return userEntity;
+
     }
 
     //update
-    public UserEntity update(Integer id, UserEntity userEntityToUpdate) {
+    public UserEntity update(Integer id, UserEntity userEntityToUpdate) throws UserNotFoundException {
         return userRepository.update(id, userEntityToUpdate);
     }
 
     //delete
-    public void delete(Integer id) {
+    public void delete(Integer id) throws UserNotFoundException {
         userRepository.delete(id);
     }
-    
+
     public List<UserEntity> list() {
         return userRepository.getUsersList();
     }

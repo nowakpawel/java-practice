@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud.repository;
 
+import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 
 import java.util.ArrayList;
@@ -23,18 +24,18 @@ public class UserRepository {
         return userEntity;
     }
     //read
-    public UserEntity read(Integer id) {
+    public UserEntity read(Integer id) throws UserNotFoundException {
         for (UserEntity userEntity : usersList) {
             if (userEntity.getId().equals(id)) {
                 return userEntity;
             }
         }
 
-        return null;
+        throw new UserNotFoundException("User with id " + id + " not found!");
     }
 
     //update
-    public UserEntity update (Integer id, UserEntity userEntityToUpdate) {
+    public UserEntity update (Integer id, UserEntity userEntityToUpdate) throws UserNotFoundException {
         for (UserEntity userEntity : usersList) {
             if (userEntity.getId().equals(id)) {
                 //TODO: Implement validation:
@@ -45,19 +46,25 @@ public class UserRepository {
                 return userEntity;
             }
         }
-        return null;
+        throw new UserNotFoundException("User with id " + id + " not found!");
     }
 
     //delete
-    public void delete(Integer id) {
+    public void delete(Integer id) throws UserNotFoundException {
         Iterator<UserEntity> iterator = usersList.iterator();
+        UserEntity deletedUser = new UserEntity();
 
         while (iterator.hasNext()) {
             UserEntity userEntity = iterator.next();
 
-            if(userEntity.getId().equals(id)) {
+            if (userEntity.getId().equals(id)) {
+                deletedUser = userEntity;
                 iterator.remove();
             }
+        }
+
+        if (deletedUser.getId() == null) {
+            throw new UserNotFoundException("User with id " + id + " not found!");
         }
     }
 }

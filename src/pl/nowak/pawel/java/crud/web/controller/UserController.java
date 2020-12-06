@@ -1,9 +1,8 @@
 package pl.nowak.pawel.java.crud.web.controller;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 import pl.nowak.pawel.java.crud.service.UserService;
-import pl.nowak.pawel.java.crud.exception.UserException;
 import pl.nowak.pawel.java.crud.service.mapper.UserMapper;
 import pl.nowak.pawel.java.crud.web.model.UserModel;
 
@@ -19,23 +18,36 @@ public class UserController {
     }
 
     public UserModel createUser(UserModel userModel) {
-        UserEntity userCreated = userService.create(userModel); // po co przypisuje stworzonego usera do osobnej zmiennej? userEntity != userCreated?
+        UserEntity userCreated = userService.create(userModel);
         return userMapper.fromEntityToModel(userCreated);
     }
 
-    public UserModel readUser(Integer id) throws UserException {
-        UserEntity userEntity = userService.read(id); //Delegate
+    public UserModel readUser(Integer id) {
+        UserEntity userEntity = new UserEntity();
+        try {
+            userEntity = userService.read(id); //Delegate
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
         return userMapper.fromEntityToModel(userEntity);
     }
 
     public UserModel updateUser(Integer id, UserModel userModel) {
         UserEntity userEntity = userMapper.fromModelToEntity(userModel);
-        userService.update(id, userEntity);
+        try {
+            userService.update(id, userEntity);
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
         return userMapper.fromEntityToModel(userEntity);
     }
 
     public void deleteUser(Integer id) {
-        userService.delete(id);
+        try {
+            userService.delete(id);
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<UserModel> readAllUsers() {
