@@ -88,7 +88,7 @@ public class Main {
         UserService userService = new UserService(userRepository);
         UserController userController = new UserController(userService);
         try {
-            userController.read(-1);
+            userController.readUser(-1);
         } catch (UserException e) {
             e.printStackTrace();
         } finally {
@@ -98,8 +98,6 @@ public class Main {
         UserModel userModel = new UserModel();
         userModel.setEmail("admin@nowakpawel.pl");
         System.out.println(userModel);
+    }
 
-    } //Do każdej metody w repository dodac wyjatek, co najmniej UserException propagować wyjątki do controllera
-    //Artykuł o warstwach -> Zrobić mappera i użyć go w warstwie service, tak aby controller zwracał model, a repository entity
-    //
 }

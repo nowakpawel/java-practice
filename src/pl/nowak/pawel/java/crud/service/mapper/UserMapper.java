@@ -7,6 +7,7 @@ public class UserMapper {
     public UserModel fromEntityToModel(UserEntity userEntity) {
         UserModel userModel = new UserModel();
 
+        userModel.setId(userEntity.getId());
         userModel.setLogin(userEntity.getLogin());
         userModel.setEmail(userEntity.getEmail());
         userModel.setPassword(userEntity.getPassword());
