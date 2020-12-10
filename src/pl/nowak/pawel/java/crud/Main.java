@@ -31,10 +31,8 @@ public class Main {
         //System.out.println(userController.readUser(createdUser2.getId()));
         System.out.println("List after deleted first user: " + userController.readAllUsers());
 
-        //userController.readUser(-1);
-       // userController.deleteUser(-1);
-    }
 
-    //TODO: //Do każdej metody w repository dodac wyjatek, co najmniej UserException propagować wyjątki do controllera
-    //TODO: //Artykuł o warstwach -> Zrobić mappera i użyć go w warstwie service, tak aby controller zwracał model, a repository entity
+    }
+    //TODO: poprawić mappera
+    //TODO: Zmergować gałęzie mapper-refactor i add-spring do maina
 }
