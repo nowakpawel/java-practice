@@ -1,8 +1,10 @@
 package pl.nowak.pawel.java.crud.service.mapper;
 
+import org.springframework.stereotype.Component;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 import pl.nowak.pawel.java.crud.web.model.UserModel;
 
+@Component
 public class UserMapper {
     public UserModel fromEntityToModel(UserEntity userEntity) {
         UserModel userModel = new UserModel();

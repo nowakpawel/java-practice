@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud.service;
 
+import org.springframework.stereotype.Service;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.exception.UserException;
@@ -10,15 +11,16 @@ import pl.nowak.pawel.java.crud.web.model.UserModel;
 import java.util.*;
 import java.util.logging.Logger;
 
-
+@Service
 public class UserService {
     private static final Logger LOGGER  = Logger.getLogger(UserService.class.getName());
     private UserRepository userRepository;
-    private UserMapper userMapper = new UserMapper();
+    private UserMapper userMapper;
 
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     //create

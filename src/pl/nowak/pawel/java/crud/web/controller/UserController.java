@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud.web.controller;
 
+import org.springframework.stereotype.Controller;
 import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 import pl.nowak.pawel.java.crud.service.UserService;
@@ -9,12 +10,14 @@ import pl.nowak.pawel.java.crud.web.model.UserModel;
 import java.util.ArrayList;
 import java.util.List;
 
+@Controller
 public class UserController {
     private UserService userService; //Relacja typu agregacja
-    private UserMapper userMapper = new UserMapper();
+    private UserMapper userMapper;
 
-    public UserController(UserService userService) { //dependency injection
+    public UserController(UserService userService, UserMapper userMapper) { //dependency injection
         this.userService = userService;
+        this.userMapper = userMapper;
     }
 
     public UserModel createUser(UserModel userModel) {
