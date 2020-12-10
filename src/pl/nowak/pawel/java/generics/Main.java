@@ -86,8 +86,9 @@ public class Main {
 //        userService.delete(usersList.get(0).getId());
 //        System.out.println("\nUsers list after deleting one user: " + usersList);
         UserRepository userRepository = new UserRepository();
-        UserService userService = new UserService(userRepository);
-        UserController userController = new UserController(userService);
+        UserMapper userMapper = new UserMapper();
+        UserService userService = new UserService(userRepository, userMapper);
+        UserController userController = new UserController(userService, userMapper);
 
         userController.readUser(-1);
 
