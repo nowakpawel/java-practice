@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud.web.controller;
 
+import pl.nowak.pawel.java.crud.exception.UserException;
 import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 import pl.nowak.pawel.java.crud.service.UserService;
@@ -8,9 +9,13 @@ import pl.nowak.pawel.java.crud.web.model.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
+//Responsible ONLY for:
+//http requests handling!!(statuses
+//http request validation!!
 
 public class UserController {
     private UserService userService; //Relacja typu agregacja
+
     private UserMapper userMapper = new UserMapper();
 
     public UserController(UserService userService) { //dependency injection
@@ -18,21 +23,17 @@ public class UserController {
     }
 
     public UserModel createUser(UserModel userModel) {
-        UserEntity userCreated = userService.create(userModel);
-        return userMapper.fromEntityToModel(userCreated);
+//        UserEntity userCreated = userService.create(userModel);
+//        return userMapper.fromEntityToModel(userCreated);
+        return userService.create(userModel);
     }
 
-    public UserModel readUser(Integer id) {
-        UserEntity userEntity = new UserEntity();
-        try {
-            userEntity = userService.read(id); //Delegate
-        } catch (UserNotFoundException e) {
-            e.printStackTrace();
-        }
+    public UserModel readUser(Integer id) throws UserException { //TODO: fix mappers
+        UserEntity userEntity = userService.read(id); //Delegate
         return userMapper.fromEntityToModel(userEntity);
     }
 
-    public UserModel updateUser(Integer id, UserModel userModel) {
+    public UserModel updateUser(Integer id, UserModel userModel) { //TODO: fix mappers
         UserEntity userEntity = userMapper.fromModelToEntity(userModel);
         try {
             userService.update(id, userEntity);
@@ -42,7 +43,7 @@ public class UserController {
         return userMapper.fromEntityToModel(userEntity);
     }
 
-    public void deleteUser(Integer id) {
+    public void deleteUser(Integer id) { //TODO: fix mappers
         try {
             userService.delete(id);
         } catch (UserNotFoundException e) {
@@ -50,7 +51,7 @@ public class UserController {
         }
     }
 
-    public List<UserModel> readAllUsers() {
+    public List<UserModel> readAllUsers() { //TODO: fix mappers
         List<UserModel> usersList = new ArrayList<>();
         for(UserEntity user : userService.list()) {
             UserModel userModel = userMapper.fromEntityToModel(user);

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class UserService {
     private static final Logger LOGGER  = Logger.getLogger(UserService.class.getName());
     private UserRepository userRepository;
-    private UserMapper userMapper = new UserMapper();
+    private UserMapper userMapper = new UserMapper(); //dependency injection
 
 
     public UserService(UserRepository userRepository) {
@@ -22,13 +22,15 @@ public class UserService {
     }
 
     //create
-    public UserEntity create(UserModel userModel) {
+    public UserModel create(UserModel userModel) {
         if (userModel == null) {
             throw new NoSuchElementException("User is null");
         }
 
         UserEntity userEntity = userMapper.fromModelToEntity(userModel);
-        return userRepository.create(userEntity);
+        UserEntity createdUserEntity = userRepository.create(userEntity);
+        return userMapper.fromEntityToModel(createdUserEntity);
+
     }
 
     //read
