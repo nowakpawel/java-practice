@@ -1,19 +1,18 @@
 package pl.nowak.pawel.java.crud;
 
-import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.service.UserService;
+import pl.nowak.pawel.java.crud.service.mapper.UserMapper;
 import pl.nowak.pawel.java.crud.web.controller.UserController;
 import pl.nowak.pawel.java.crud.web.model.UserModel;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("=============================== CRUD Test =====================================");
+        UserMapper userMapper = new UserMapper();
         UserRepository userRepository = new UserRepository();
-        UserService userService = new UserService(userRepository);
-        UserController userController = new UserController(userService);
+        UserService userService = new UserService(userRepository, userMapper);
+        UserController userController = new UserController(userService, userMapper);
         UserModel user = new UserModel(null, "pawel", "pawel@testmail.com", "password");
         UserModel user2 = new UserModel(null, "zenek", "zenek@gmail.com", "securepasswd");
 

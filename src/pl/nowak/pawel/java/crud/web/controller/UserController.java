@@ -16,11 +16,11 @@ http request validation!! */
 
 public class UserController {
     private UserService userService; //Relacja typu agregacja
+    private UserMapper userMapper;
 
-    private UserMapper userMapper = new UserMapper();
-
-    public UserController(UserService userService) { //dependency injection
+    public UserController(UserService userService, UserMapper userMapper) { //dependency injection
         this.userService = userService;
+        this.userMapper = userMapper;
     }
 
     public UserModel createUser(UserModel userModel) {
