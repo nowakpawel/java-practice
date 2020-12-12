@@ -28,15 +28,8 @@ public class UserRepository {
     }
     //read
     public UserEntity read(Integer id) throws UserNotFoundException {
-//        for (UserEntity userEntity : usersList) {
-//            if (userEntity.getId().equals(id)) {
-//                return userEntity;
-//            }
-//        }
         return usersList.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() ->
                 new UserNotFoundException("User with id " + id + " not found!"));
-
-        //throw new UserNotFoundException("User with id " + id + " not found!");
     }
 
     //update
