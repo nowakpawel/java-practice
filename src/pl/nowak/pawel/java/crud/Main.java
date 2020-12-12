@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import pl.nowak.pawel.java.crud.exception.UserException;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.service.UserService;
@@ -35,7 +36,11 @@ public class Main {
 
         System.out.println("List after deleted first user: " + userController.readAllUsers());
 
-
+        try {
+            System.out.println("Read user: " + userController.readUser(createdUser2.getId()));
+        } catch (UserException ex) {
+            ex.printStackTrace();
+        }
     }
     //TODO: poprawić mappera
     //TODO: Zmergować gałęzie mapper-refactor i add-spring do maina

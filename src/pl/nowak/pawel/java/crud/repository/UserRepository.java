@@ -3,6 +3,7 @@ package pl.nowak.pawel.java.crud.repository;
 import org.springframework.stereotype.Repository;
 import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
+import pl.nowak.pawel.java.crud.service.mapper.UserMapper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,13 +28,15 @@ public class UserRepository {
     }
     //read
     public UserEntity read(Integer id) throws UserNotFoundException {
-        for (UserEntity userEntity : usersList) {
-            if (userEntity.getId().equals(id)) {
-                return userEntity;
-            }
-        }
+//        for (UserEntity userEntity : usersList) {
+//            if (userEntity.getId().equals(id)) {
+//                return userEntity;
+//            }
+//        }
+        return usersList.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() ->
+                new UserNotFoundException("User with id " + id + " not found!"));
 
-        throw new UserNotFoundException("User with id " + id + " not found!");
+        //throw new UserNotFoundException("User with id " + id + " not found!");
     }
 
     //update
