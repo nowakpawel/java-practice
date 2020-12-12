@@ -9,9 +9,10 @@ import pl.nowak.pawel.java.crud.web.model.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
-//Responsible ONLY for:
-//http requests handling!!(statuses
-//http request validation!!
+
+/*Responsible ONLY for:
+//http requests handling!!(statuses)
+http request validation!! */
 
 public class UserController {
     private UserService userService; //Relacja typu agregacja
