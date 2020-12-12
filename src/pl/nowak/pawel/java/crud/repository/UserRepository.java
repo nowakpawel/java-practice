@@ -52,18 +52,18 @@ public class UserRepository {
     //delete
     public void delete(Integer id) throws UserNotFoundException {
         Iterator<UserEntity> iterator = usersList.iterator();
-        UserEntity deletedUser = new UserEntity(); //boolean instead of creating object!
+        boolean userFound = false;
 
         while (iterator.hasNext()) {
             UserEntity userEntity = iterator.next();
 
             if (userEntity.getId().equals(id)) {
-                deletedUser = userEntity;
+                userFound = true;
                 iterator.remove();
             }
         }
 
-        if (deletedUser.getId() == null) {
+        if (!userFound) {
             throw new UserNotFoundException("User with id " + id + " not found!");
         }
     }
