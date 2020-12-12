@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud.repository;
 
+import org.springframework.stereotype.Repository;
 import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
 import pl.nowak.pawel.java.crud.repository.entity.UserEntity;
 
@@ -8,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+@Repository
 public class UserRepository {
     private List<UserEntity> usersList = new ArrayList<>();
     private Random randomUserId = new Random();

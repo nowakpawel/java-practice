@@ -1,10 +1,9 @@
 package pl.nowak.pawel.java.generics;
 
-import pl.nowak.pawel.java.crud.exception.UserNotFoundException;
+import pl.nowak.pawel.java.crud.service.mapper.UserMapper;
 import pl.nowak.pawel.java.crud.web.controller.UserController;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.service.UserService;
-import pl.nowak.pawel.java.crud.exception.UserException;
 import pl.nowak.pawel.java.crud.web.model.UserModel;
 
 import java.util.ArrayList;
@@ -86,8 +85,9 @@ public class Main {
 //        userService.delete(usersList.get(0).getId());
 //        System.out.println("\nUsers list after deleting one user: " + usersList);
         UserRepository userRepository = new UserRepository();
-        UserService userService = new UserService(userRepository);
-        UserController userController = new UserController(userService);
+        UserMapper userMapper = new UserMapper();
+        UserService userService = new UserService(userRepository, userMapper);
+        UserController userController = new UserController(userService, userMapper);
 
         userController.readUser(-1);
 
