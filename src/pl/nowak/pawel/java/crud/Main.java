@@ -41,8 +41,6 @@ public class Main {
         } catch (UserException ex) {
             ex.printStackTrace();
         }
-
-
     }
     //TODO: poprawić mappera
     //TODO: Zmergować gałęzie mapper-refactor i add-spring do maina
