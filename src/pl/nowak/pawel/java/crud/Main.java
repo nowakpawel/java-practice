@@ -28,7 +28,6 @@ public class Main {
 
         userController.deleteUser(createdUser.getId());
 
-        //System.out.println(userController.readUser(createdUser2.getId()));
         System.out.println("List after deleted first user: " + userController.readAllUsers());
 
 

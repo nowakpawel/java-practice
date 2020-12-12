@@ -54,7 +54,7 @@ public class UserRepository {
     //delete
     public void delete(Integer id) throws UserNotFoundException {
         Iterator<UserEntity> iterator = usersList.iterator();
-        UserEntity deletedUser = new UserEntity();
+        UserEntity deletedUser = new UserEntity(); //boolean instead of creating object!
 
         while (iterator.hasNext()) {
             UserEntity userEntity = iterator.next();
