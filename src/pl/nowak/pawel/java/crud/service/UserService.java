@@ -44,9 +44,7 @@ public class UserService {
         //return userRepository.update(id, userEntityToUpdate);
         UserEntity userEntity = userMapper.fromModelToEntity(userModelToUpdate);
 
-
-        return userMapper.fromEntityToModel(userRepository.update(id, userEntity)); //lepiej tak, czy lepiej przypisać to co zwraca UserRepository to osobnej zmiennej i
-        //dopiero ją zwrócić?
+        return userMapper.fromEntityToModel(userRepository.update(id, userEntity));
     }
 
     //delete

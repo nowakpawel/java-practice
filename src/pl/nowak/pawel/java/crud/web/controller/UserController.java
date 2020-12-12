@@ -35,7 +35,7 @@ public class UserController {
         return userService.read(id);
     }
 
-    public UserModel updateUser(Integer id, UserModel userModel) {
+    public UserModel updateUser(Integer id, UserModel userModel) throws UserException {
 //        UserEntity userEntity = userMapper.fromModelToEntity(userModel);
 //        try {
 //            userService.update(id, userEntity);
@@ -54,7 +54,7 @@ public class UserController {
         }
     }
 
-    public List<UserModel> readAllUsers() { //TODO: fix mappers
+    public List<UserModel> readAllUsers() {
 //        List<UserModel> usersList = new ArrayList<>();
 //        for(UserEntity user : userService.list()) {
 //            UserModel userModel = userMapper.fromEntityToModel(user);
