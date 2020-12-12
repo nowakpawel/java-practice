@@ -30,19 +30,23 @@ public class UserService {
         UserEntity userEntity = userMapper.fromModelToEntity(userModel);
         UserEntity createdUserEntity = userRepository.create(userEntity);
         return userMapper.fromEntityToModel(createdUserEntity);
-
     }
 
     //read
-    public UserEntity read(Integer id) throws UserNotFoundException {
+    public UserModel read(Integer id) throws UserNotFoundException {
         UserEntity userEntity = userRepository.read(id);
-        return userEntity;
+        return userMapper.fromEntityToModel(userEntity);
 
     }
 
     //update
-    public UserEntity update(Integer id, UserEntity userEntityToUpdate) throws UserNotFoundException {
-        return userRepository.update(id, userEntityToUpdate);
+    public UserModel update(Integer id, UserModel userModelToUpdate) throws UserNotFoundException {
+        //return userRepository.update(id, userEntityToUpdate);
+        UserEntity userEntity = userMapper.fromModelToEntity(userModelToUpdate);
+
+
+        return userMapper.fromEntityToModel(userRepository.update(id, userEntity)); //lepiej tak, czy lepiej przypisać to co zwraca UserRepository to osobnej zmiennej i
+        //dopiero ją zwrócić?
     }
 
     //delete
@@ -50,7 +54,16 @@ public class UserService {
         userRepository.delete(id);
     }
 
-    public List<UserEntity> list() {
-        return userRepository.getUsersList();
+    public List<UserModel> list() {
+        //return userRepository.getUsersList();
+        List<UserEntity> entityUsers = userRepository.getUsersList();
+        List<UserModel> modelUsers = new ArrayList<>();
+
+        for (UserEntity entity : entityUsers) {
+            UserModel userModel = userMapper.fromEntityToModel(entity);
+            modelUsers.add(userModel);
+        }
+
+        return modelUsers;
     }
 }

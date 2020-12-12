@@ -29,22 +29,24 @@ public class UserController {
         return userService.create(userModel);
     }
 
-    public UserModel readUser(Integer id) throws UserException { //TODO: fix mappers
-        UserEntity userEntity = userService.read(id); //Delegate
-        return userMapper.fromEntityToModel(userEntity);
+    public UserModel readUser(Integer id) throws UserException {
+//        UserEntity userEntity = userService.read(id); //Delegate
+//        return userMapper.fromEntityToModel(userEntity);
+        return userService.read(id);
     }
 
-    public UserModel updateUser(Integer id, UserModel userModel) { //TODO: fix mappers
-        UserEntity userEntity = userMapper.fromModelToEntity(userModel);
-        try {
-            userService.update(id, userEntity);
-        } catch (UserNotFoundException e) {
-            e.printStackTrace();
-        }
-        return userMapper.fromEntityToModel(userEntity);
+    public UserModel updateUser(Integer id, UserModel userModel) {
+//        UserEntity userEntity = userMapper.fromModelToEntity(userModel);
+//        try {
+//            userService.update(id, userEntity);
+//        } catch (UserNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return userMapper.fromEntityToModel(userEntity);
+        return userService.update(id, userModel);
     }
 
-    public void deleteUser(Integer id) { //TODO: fix mappers
+    public void deleteUser(Integer id) {
         try {
             userService.delete(id);
         } catch (UserNotFoundException e) {
@@ -53,12 +55,13 @@ public class UserController {
     }
 
     public List<UserModel> readAllUsers() { //TODO: fix mappers
-        List<UserModel> usersList = new ArrayList<>();
-        for(UserEntity user : userService.list()) {
-            UserModel userModel = userMapper.fromEntityToModel(user);
-            usersList.add(userModel);
-        }
-
-        return usersList;
+//        List<UserModel> usersList = new ArrayList<>();
+//        for(UserEntity user : userService.list()) {
+//            UserModel userModel = userMapper.fromEntityToModel(user);
+//            usersList.add(userModel);
+//        }
+//
+//        return usersList;
+        return userService.list();
     }
 }
