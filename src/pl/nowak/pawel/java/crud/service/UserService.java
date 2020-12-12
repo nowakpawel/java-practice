@@ -41,7 +41,6 @@ public class UserService {
 
     //update
     public UserModel update(Integer id, UserModel userModelToUpdate) throws UserNotFoundException {
-        //return userRepository.update(id, userEntityToUpdate);
         UserEntity userEntity = userMapper.fromModelToEntity(userModelToUpdate);
 
         return userMapper.fromEntityToModel(userRepository.update(id, userEntity));
@@ -53,7 +52,6 @@ public class UserService {
     }
 
     public List<UserModel> list() {
-        //return userRepository.getUsersList();
         List<UserEntity> entityUsers = userRepository.getUsersList();
         List<UserModel> modelUsers = new ArrayList<>();
 
