@@ -1,5 +1,6 @@
 package pl.nowak.pawel.java.crud;
 
+import pl.nowak.pawel.java.crud.exception.UserException;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.service.UserService;
 import pl.nowak.pawel.java.crud.service.mapper.UserMapper;
@@ -22,7 +23,11 @@ public class Main {
         System.out.println("List after users added: " + userController.readAllUsers());
 
         UserModel updatedUser = new UserModel(null, "pawel", "paweladmin@testmail.com", "verystrongpasswd");
-        userController.updateUser(createdUser2.getId(), updatedUser);
+        try {
+            userController.updateUser(createdUser2.getId(), updatedUser);
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("List after updated second user: " + userController.readAllUsers());
 
