@@ -34,17 +34,14 @@ public class UserRepository {
 
     //update
     public UserEntity update (Integer id, UserEntity userEntityToUpdate) throws UserNotFoundException {
-        for (UserEntity userEntity : usersList) {
-            if (userEntity.getId().equals(id)) {
-                //TODO: Implement validation:
-                userEntity.setLogin(userEntityToUpdate.getLogin());
-                userEntity.setEmail(userEntityToUpdate.getEmail());
-                userEntity.setPassword(userEntityToUpdate.getPassword());
+        UserEntity userEntity = usersList.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() ->
+                new UserNotFoundException("User with id " + id + " not found!"));
 
-                return userEntity;
-            }
-        }
-        throw new UserNotFoundException("User with id " + id + " not found!");
+        userEntity.setLogin(userEntityToUpdate.getLogin());
+        userEntity.setEmail(userEntityToUpdate.getPassword());
+        userEntity.setPassword(userEntityToUpdate.getPassword());
+
+        return userEntity;
     }
 
     //delete
