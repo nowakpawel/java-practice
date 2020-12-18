@@ -1,6 +1,6 @@
 package pl.nowak.pawel.java.crud;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import pl.nowak.pawel.java.crud.exception.UserException;
 import pl.nowak.pawel.java.crud.repository.UserRepository;
 import pl.nowak.pawel.java.crud.service.UserService;

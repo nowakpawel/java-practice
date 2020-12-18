@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Repository
 public class UserRepository {
@@ -28,14 +29,22 @@ public class UserRepository {
     }
     //read
     public UserEntity read(Integer id) throws UserNotFoundException {
-        return usersList.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() ->
+        return usersList.stream()
+                .filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() ->
                 new UserNotFoundException("User with id " + id + " not found!"));
     }
 
     //update
     public UserEntity update (Integer id, UserEntity userEntityToUpdate) throws UserNotFoundException {
-        UserEntity userEntity = usersList.stream().filter(user -> user.getId().equals(id)).findFirst().orElseThrow(() ->
-                new UserNotFoundException("User with id " + id + " not found!"));
+        UserEntity userEntity = usersList.stream()
+                .filter(user -> user.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found!"));
+        usersList.stream()
+              //  .map(UserEntity::getEmail)
+                //.map(userEntity1 -> userEntity1.getEmail())
+                .map(UserEntity::getEmail)
+                .collect(Collectors.toList());
 
         userEntity.setLogin(userEntityToUpdate.getLogin());
         userEntity.setEmail(userEntityToUpdate.getPassword());
